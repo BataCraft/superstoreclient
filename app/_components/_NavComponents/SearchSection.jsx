@@ -1,6 +1,7 @@
 import Link from "next/link"
 import SearchBar from "./SearchBar"
 import { ShoppingBag } from "lucide-react"
+import NavCart from "./NavCart"
 
 const SearchSection = () => {
   return (
@@ -21,9 +22,8 @@ const SearchSection = () => {
                   </div>
                 </div>
   
-                <div className="relative">
-                  <ShoppingBag/>
-                  <span className="absolute top-1 right-[-10px] bg-[#df4949] text-white rounded-full size-5 text-center">4</span>
+                <div>
+                  <NavCart/>
                 </div>
               </div>
            </div>

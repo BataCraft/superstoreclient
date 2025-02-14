@@ -1,0 +1,94 @@
+{
+    "timestamp": "2025-02-06 08:59:31",
+    "updated_by": "BataCraft",
+    "product_ratings": [
+      {
+        "product_id": 1,
+        "overall_rating": 4.5,
+        "total_reviews": 127,
+        "rating_distribution": {
+          "5_star": 75,
+          "4_star": 32,
+          "3_star": 12,
+          "2_star": 5,
+          "1_star": 3
+        },
+        "reviews": [
+          {
+            "id": "rev_001",
+            "user": {
+              "id": "user_123",
+              "name": "John Doe",
+              "avatar": "/avatars/john.jpg"
+            },
+            "rating": 5,
+            "title": "Great Product!",
+            "comment": "This product exceeded my expectations. The quality is outstanding!",
+            "date": "2025-02-05",
+            "verified_purchase": true,
+            "helpful_votes": 15,
+            "images": [
+              "/review-images/rev001-1.jpg",
+              "/review-images/rev001-2.jpg"
+            ]
+          },
+          {
+            "id": "rev_002",
+            "user": {
+              "id": "user_124",
+              "name": "Jane Smith",
+              "avatar": "/avatars/jane.jpg"
+            },
+            "rating": 4,
+            "title": "Good but could be better",
+            "comment": "Product is good overall, but there's room for improvement.",
+            "date": "2025-02-04",
+            "verified_purchase": true,
+            "helpful_votes": 8,
+            "images": []
+          }
+        ],
+        "rating_metrics": {
+          "quality": 4.6,
+          "value": 4.3,
+          "durability": 4.7
+        }
+      },
+      {
+        "product_id": 2,
+        "overall_rating": 4.2,
+        "total_reviews": 85,
+        "rating_distribution": {
+          "5_star": 45,
+          "4_star": 25,
+          "3_star": 10,
+          "2_star": 3,
+          "1_star": 2
+        },
+        "reviews": [
+          {
+            "id": "rev_003",
+            "user": {
+              "id": "user_125",
+              "name": "Mike Johnson",
+              "avatar": "/avatars/mike.jpg"
+            },
+            "rating": 5,
+            "title": "Perfect fit!",
+            "comment": "Exactly what I was looking for. Great quality and fast delivery.",
+            "date": "2025-02-06",
+            "verified_purchase": true,
+            "helpful_votes": 12,
+            "images": [
+              "/review-images/rev003-1.jpg"
+            ]
+          }
+        ],
+        "rating_metrics": {
+          "quality": 4.3,
+          "value": 4.0,
+          "durability": 4.4
+        }
+      }
+    ]
+  }

@@ -8,42 +8,42 @@ const Service = () => {
         <div className="grid grid-cols-2 md:grid-cols-5  bg-gray-200 w-full h-[150px]">
 
             <div className="flex items-center justify-center gap-3 border border-r-gray-300">
-                <Truck size={40} className="text-[#df4949]"/>
+                <Truck size={30} className="text-[#df4949] "/>
                 <div>
-                    <h4 className="font-bold">Free Delivery</h4>
-                    <span className="font-medium text-black/70">from $50</span>
+                    <h4 className="font-bold text-xs sm:text-base md:text-xl">Free Delivery</h4>
+                    <span className="font-medium text-black/70 text-xs sm:text-base">from $50</span>
                 </div>
             </div>
 
             <div className="flex items-center justify-center gap-3 border border-r-gray-300">
-                <ThumbsUp size={40} className="text-[#df4949]"/>
+                <ThumbsUp size={30} className="text-[#df4949]"/>
                 <div>
-                    <h4 className="font-bold">99% Customer</h4>
-                    <span className="font-medium text-black/70">Feedbacks</span>
+                    <h4 className="font-bold text-xs sm:text-base md:text-xl">99% Customer</h4>
+                    <span className="font-medium text-black/70 text-xs sm:text-base">Feedbacks</span>
                 </div>
             </div>
 
             <div className="flex items-center justify-center gap-3 border border-r-gray-300">
-                <RefreshCcw size={40} className="text-[#df4949]"/>
+                <RefreshCcw size={30} className="text-[#df4949]"/>
                 <div>
-                    <h4 className="font-bold">365 Days</h4>
-                    <span className="font-medium text-black/70">for free return</span>
+                    <h4 className="font-bold text-xs sm:text-base md:text-xl">365 Days</h4>
+                    <span className="font-medium text-black/70 text-xs sm:text-base">for free return</span>
                 </div>
             </div>
 
             <div className="flex items-center justify-center gap-3 border border-r-gray-300">
-                <HandCoins size={40} className="text-[#df4949]"/>
+                <HandCoins size={30} className="text-[#df4949]"/>
                 <div>
-                    <h4 className="font-bold">Payment</h4>
-                    <span className="font-medium text-black/70">Secure System</span>
+                    <h4 className="font-bold text-xs sm:text-base md:text-xl">Payment</h4>
+                    <span className="font-medium text-black/70 text-xs sm:text-base">Secure System</span>
                 </div>
             </div>
 
             <div className="flex items-center justify-center gap-3 border border-r-gray-300">
-                <TagIcon size={40} className="text-[#df4949]"/>
+                <TagIcon size={30} className="text-[#df4949]"/>
                 <div>
-                    <h4 className="font-bold">Only Best</h4>
-                    <span className="font-medium text-black/70">Brands</span>
+                    <h4 className="font-bold text-xs sm:text-base md:text-xl">Only Best</h4>
+                    <span className="font-medium text-black/70 text-xs sm:text-base">Brands</span>
                 </div>
             </div>
 

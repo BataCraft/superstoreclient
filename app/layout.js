@@ -1,6 +1,8 @@
 import { Oswald, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/Header";
+import Footer from "./_components/_Footer/Page";
+import { Toaster } from "react-hot-toast";
 
 const opensans = Open_Sans({
   variable: "--font-opensans",
@@ -25,7 +27,9 @@ export default function RootLayout({ children }) {
       >
         <div>
           <Header/>
+          <Toaster position="top-center" reverseOrder={false}/>
           {children}
+          <Footer/>
           </div>
       </body>
     </html>
