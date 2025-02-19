@@ -22,7 +22,7 @@ const Description = ({ product }) => {
       <Card>
         <CardHeader>
           <CardTitle>About this product</CardTitle>
-          <CardDescription className="pt-4 text-justify text-base sm:text-lg leading-relaxed">
+          <CardDescription className="pt-4 text-justify text-xs sm:text-base leading-relaxed">
             {product.description}
           </CardDescription>
         </CardHeader>

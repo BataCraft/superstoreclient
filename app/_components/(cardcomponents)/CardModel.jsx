@@ -6,6 +6,8 @@ import SaleCountdown from "./Offer";
 import useStore from "../../../Store/useStore";
 import { useEffect } from "react";
 import CardSkeleton from "../Skeleton/CardSkeleton";
+import Link from "next/link";
+import LoadingPage from "@/components/Custom/Loader";
 
 const CardModel = () => {
   const { data, error, loading, fetchData } = useStore();
@@ -35,7 +37,9 @@ const CardModel = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>
+      <CardSkeleton/>
+    </div>;
   }
 
   // Check if data.products exists before filtering
@@ -66,7 +70,7 @@ const CardModel = () => {
             </div>
 
             <div className="text-center">
-              <Button className="bg-assentColor text-white px-12">View More</Button>
+              <Link href={"/Product-list"} className="bg-assentColor text-white px-12 py-4">View More</Link>
             </div>
           </div>
 

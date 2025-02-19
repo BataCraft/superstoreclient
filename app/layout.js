@@ -1,8 +1,7 @@
 import { Oswald, Open_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "./_components/Header";
-import Footer from "./_components/_Footer/Page";
 import { Toaster } from "react-hot-toast";
+import NavigationWrapper from "./_components/NavigationWrapper";
 
 const opensans = Open_Sans({
   variable: "--font-opensans",
@@ -21,16 +20,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${opensans.variable} ${oswald.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <div>
-          <Header/>
+        <NavigationWrapper>
           <Toaster position="top-center" reverseOrder={false}/>
           {children}
-          <Footer/>
-          </div>
+        </NavigationWrapper>
       </body>
     </html>
   );

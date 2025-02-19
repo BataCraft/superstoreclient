@@ -21,8 +21,10 @@ const SearchBar = () => {
                             <SelectValue placeholder="Category" />
                         </SelectTrigger>
                         <SelectContent>
-                            {categories.map(categories => 
-                                <SelectItem value={categories.name}>{categories.name}</SelectItem>
+                            {categories.map((categories, index) => 
+                                (
+                                    <SelectItem value={categories.name} key={`category-${index}`}>{categories.name}</SelectItem>
+                                )
                             )}
                             
                             

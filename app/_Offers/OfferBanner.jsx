@@ -27,7 +27,7 @@ const OfferBanner = () => {
                                 <li className="list-none flex items-center gap-2 pb-3"><span> <Check size={20} className="text-gray-400" /> </span>Support Memory Card</li>
                             </div>
 
-                            <div className=""><Image src={"/headphone01.png"} width={600} height={600}/></div>
+                            <div className=""><Image src={"/headphone01.png"} width={600} height={600} alt="banners"/></div>
                         </div>
                     </div>
                 </div>
