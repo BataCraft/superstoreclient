@@ -10,7 +10,7 @@ export default function NavigationWrapper({children}) {
     const isAuthPage = pathname?.includes('/auth/login') || pathname?.includes('/auth/register') || pathname?.includes('/auth/emailverify');
     
     return (
-        <div suppressHydrationWarning>
+        <div suppressHydrationWarning className="flex flex-col justify-between min-h-screen">
             {!isAuthPage && <Header/>}
             {children}
             {!isAuthPage && <Footer/>}

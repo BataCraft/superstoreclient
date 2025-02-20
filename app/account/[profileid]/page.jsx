@@ -14,6 +14,17 @@ const ProfilePage = () => {
   const { user, loading, checkAuth, logout } = useAuthStore();
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
+  const userId = user ? user._id : null;
+  const handleEditProfile = async()=>{
+     if(userId)
+     {
+      router.push(`/profile/${userId}`);
+     }
+     else {
+      toast.error("please login");
+     }
+  }
+
   useEffect(() => {
     // Check the authentication status
     setIsCheckingAuth(true);
@@ -100,6 +111,7 @@ const ProfilePage = () => {
                   <Button 
                     className="w-full justify-between hover:scale-105 transition-transform duration-200"
                     variant="outline"
+                    onClick = {handleEditProfile}
                   >
                     Edit Profile
                     <Edit className="h-4 w-4 ml-2" />

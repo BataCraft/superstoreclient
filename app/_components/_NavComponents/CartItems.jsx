@@ -15,35 +15,11 @@ const CartItems = ({ cartItems }) => {
     }
 
 
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${Cookies.get("token")}`, // Ensure the user is authenticated
-        },
-        body: JSON.stringify({
-          items: cartItems,
-          // shippingAddress,
-          // paymentMethod,
-        }),
-      });
-      const data = await response.json()
+    localStorage.setItem("checkoutItems", JSON.stringify(cartItems));
+    console.log("Saving to localStorage:", cartItems);
 
-      if(!response.ok)
-      {
-        throw new Error(data.message || "Checkout failed!");
-      }
-      toast.success("Order placed Successfully!")
 
-      Cookies.remove("cart");
-
-      router.push(`/order-confirmation/${data.order._id}`);
-    } catch (error) {
-      console.error(error.message);
-      
-      
-    }
+   router.push("/checkout");
    
   };
 

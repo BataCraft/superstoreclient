@@ -93,6 +93,36 @@ const useAuthStore = create((set) => ({
     localStorage.removeItem("cart");
 
   },
+  
+  updateUser: async ({ userId, updatedData }) => {
+    try {
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+  
+      if (!token) {
+        throw new Error("User is not authenticated");
+      }
+  
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/updateUser/${userId}`,
+        updatedData, // <-- Include updated data in request body
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Send token for authentication
+          },
+        }
+      );
+  
+      set({ user: res.data.user }); // Update store with new user data
+      toast.success("Profile updated successfully!");
+      return res.data;
+    } catch (error) {
+      console.error("Error updating user:", error.response?.data || error.message);
+      toast.error(error.response?.data?.message || "Failed to update profile");
+      throw error.response?.data || error.message;
+    }
+  },
+  
 
   registerUser: async (email, password, phoneNumber, name) => {
     set({ loading: true, error: null });
