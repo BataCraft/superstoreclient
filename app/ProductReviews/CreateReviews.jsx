@@ -1,11 +1,11 @@
 import { useState } from "react";
 import useReviewStore from "@/Store/ReviewStore";
-import { usePathname, useSearchParams } from "next/navigation"; // App Router hooks
+
 import { Star } from "lucide-react";
 
 const CreateReview = () => {
   const pathname = usePathname(); // Use pathname from Next.js App router
-  const searchParams = useSearchParams(); // Optional, for query params
+  
   const { addReview, loading, error } = useReviewStore();
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");

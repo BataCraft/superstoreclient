@@ -1,30 +1,20 @@
 "use client"
 
-import { Search } from "lucide-react"
+import { Suspense } from "react";
+import { Search } from "lucide-react";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const categories = [
-    {name: "Electronics"}, 
-    {name: "Fashion"}, 
-    {name: "Home & Office"}, 
-    {name: "Health & Beauty"}, 
-    {name: "Phones & Tablets"}, 
-    {name: "Computing"}, 
-    {name: "Sporting Goods"}, 
-    {name: "Automobile"}, 
-    {name: "Baby Products"}, 
     {name: "Gaming"}, 
-    {name: "Groceries"}, 
-    {name: "Other"}
 ];
 
 const SearchBar = () => {
@@ -75,7 +65,7 @@ const SearchBar = () => {
                 </button>
             </div>
         </div>
-    )
+    );
 }
 
-export default SearchBar
+export default SearchBar;

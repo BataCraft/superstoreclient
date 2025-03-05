@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import useStore from "@/Store/useStore";
 import Card from "../_components/(cardcomponents)/Card";
@@ -9,7 +9,7 @@ import CardSkeleton from "../_components/Skeleton/CardSkeleton";
 const AllproductList = () => {
   const { data, loading, error, fetchData } = useStore();
   const searchParams = useSearchParams();
-  
+
   const query = searchParams.get("query")?.toLowerCase() || "";
   const category = searchParams.get("category") || "";
 
@@ -40,7 +40,9 @@ const AllproductList = () => {
           <Card key={product._id} product={product} />
         ))
       ) : (
-        <p className="text-center text-gray-500">No Product Available</p>
+        <p className="text-center text-gray-500">
+          <CardSkeleton/>
+        </p>
       )}
     </div>
   );
