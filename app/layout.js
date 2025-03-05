@@ -20,10 +20,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" >
       <body
         className={`${opensans.variable} ${oswald.variable} antialiased`}
-        suppressHydrationWarning
+        
       >
         <NavigationWrapper>
           <Toaster position="top-center" reverseOrder={false}/>

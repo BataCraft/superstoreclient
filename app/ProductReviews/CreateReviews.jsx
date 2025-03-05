@@ -2,6 +2,7 @@ import { useState } from "react";
 import useReviewStore from "@/Store/ReviewStore";
 
 import { Star } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const CreateReview = () => {
   const pathname = usePathname(); // Use pathname from Next.js App router

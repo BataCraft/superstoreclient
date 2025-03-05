@@ -18,7 +18,7 @@ const AllproductList = () => {
   }, [fetchData]);
 
   if (loading) return <LoadingPage />;
-  if (error) return <div className="text-red-500"><CardSkeleton/></div>;
+  if (error) return <div className="text-red-500"><CardSkeleton /></div>;
 
   // Ensure `data.products` is used correctly
   let products = data?.products || [];
@@ -41,11 +41,18 @@ const AllproductList = () => {
         ))
       ) : (
         <p className="text-center text-gray-500">
-          <CardSkeleton/>
+          <CardSkeleton />
         </p>
       )}
     </div>
   );
 };
 
-export default AllproductList;
+// Wrap AllproductList component with Suspense to handle the useSearchParams() and client-side logic
+const SuspenseWrapper = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <AllproductList />
+  </Suspense>
+);
+
+export default SuspenseWrapper;

@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense } from "react";
+import { Suspense } from "react"; // Import Suspense
 import { Search } from "lucide-react";
 import {
     Select,
@@ -14,7 +14,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const categories = [
-    {name: "Gaming"}, 
+    { name: "Gaming" }, 
 ];
 
 const SearchBar = () => {
@@ -26,9 +26,9 @@ const SearchBar = () => {
         const params = new URLSearchParams(searchParams);
 
         if (term) {
-            params.set('query', term);
+            params.set("query", term);
         } else {
-            params.delete('query');
+            params.delete("query");
         }
         replace(`/Product-list?${params.toString()}`);
     }, 300);
@@ -36,12 +36,12 @@ const SearchBar = () => {
     return (
         <div className="w-[25rem] lg:w-[40rem]">
             <div className="flex items-center border-[#df4949] border-2 rounded-full">
-                <input 
+                <input
                     onChange={(e) => handleSearch(e.target.value)}
-                    defaultValue={searchParams.get('query')?.toString()}
-                    type="text" 
-                    placeholder="Search for products, brands and categories" 
-                    className="w-full rounded-l-full outline-none p-2" 
+                    defaultValue={searchParams.get("query")?.toString()}
+                    type="text"
+                    placeholder="Search for products, brands and categories"
+                    className="w-full rounded-l-full outline-none p-2"
                 />
                 <div>
                     <Select>
@@ -50,10 +50,7 @@ const SearchBar = () => {
                         </SelectTrigger>
                         <SelectContent className="bg-white">
                             {categories.map((category, index) => (
-                                <SelectItem 
-                                    value={category.name} 
-                                    key={`category-${index}`}
-                                >
+                                <SelectItem value={category.name} key={`category-${index}`}>
                                     {category.name}
                                 </SelectItem>
                             ))}
@@ -66,6 +63,13 @@ const SearchBar = () => {
             </div>
         </div>
     );
-}
+};
 
-export default SearchBar;
+// Wrap SearchBar component with Suspense to handle the useSearchParams()
+const SuspenseWrapper = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <SearchBar />
+    </Suspense>
+);
+
+export default SuspenseWrapper;
