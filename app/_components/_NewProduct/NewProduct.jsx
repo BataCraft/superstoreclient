@@ -1,3 +1,4 @@
+"use client"
 import useStore from "@/Store/useStore"
 import ProductHeader from "../ProdctHeader"
 import { useEffect } from "react";

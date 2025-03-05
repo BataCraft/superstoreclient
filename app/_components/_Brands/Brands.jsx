@@ -1,7 +1,9 @@
+"use client"; // Add this directive
+
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
-import ProductHeader from "../ProdctHeader"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
+import ProductHeader from "../ProdctHeader";
 
 
 const brandLogo = [
@@ -32,26 +34,21 @@ const brandLogo = [
     }
 ]
 
-
-
 const Brands = () => {
     return (
         <section className="py-16 bg-gray-50 mt-16">
             <motion.div
-            animate = {
-                {
-                    x:20,
-                    
-                }
-            }
-            transition={{
-                duration: 3,
-                delay : 1
-            }}
-            className="container mx-auto px-4">
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                    duration: 0.5,
+                    delay: 0.2
+                }}
+                className="container mx-auto px-4"
+            >
                 <div className="flex items-baseline justify-between">
-                    <div className=" mb-12">
-                        <ProductHeader title={"Brands"} description={"Hot items, Affordable Price"} />
+                    <div className="mb-12">
+                        <ProductHeader title="Brands" description="Hot items, Affordable Price" />
                     </div>
 
                     <div className="text-center mt-12">
@@ -61,7 +58,6 @@ const Brands = () => {
                             View All Brands <ArrowRight />
                         </button>
                     </div>
-
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -72,7 +68,7 @@ const Brands = () => {
                                      hover:shadow-md transition-all duration-300 
                                      transform hover:-translate-y-1"
                         >
-                            <div className="relative  h-32 md:h-44 w-full">
+                            <div className="relative h-32 md:h-44 w-full">
                                 <Image
                                     src={brand.image}
                                     alt={brand.name}
@@ -85,13 +81,9 @@ const Brands = () => {
                                            20vw"
                                 />
                             </div>
-                           
                         </div>
                     ))}
                 </div>
-
-
-
             </motion.div>
         </section>
     )

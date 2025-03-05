@@ -1,6 +1,8 @@
+"use client"; // Add this directive to explicitly make this a client component
+
+import React from 'react';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import HeroNav from "./_components/HeroNav";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -25,10 +27,6 @@ const img = [
 const MainHeroSection = () => {
   return (
     <main className="relative mt-8 flex flex-col">
-      {/* Hero Navigation */}
-      
-
-      {/* Banner */}
       <div className="flex-1 container mx-auto px-4 sm:px-0 pb-12 flex items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -66,9 +64,6 @@ const MainHeroSection = () => {
           </Carousel>
         </motion.div>
       </div>
-
-      {/* Background Decorative Elements */}
-      {/* <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-200 to-transparent opacity-50"></div> */}
     </main>
   );
 };

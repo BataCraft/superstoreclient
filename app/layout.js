@@ -1,5 +1,6 @@
 import { Oswald, Open_Sans } from "next/font/google";
 import "./globals.css";
+import '../app/globals.css'
 import { Toaster } from "react-hot-toast";
 import NavigationWrapper from "./_components/NavigationWrapper";
 
