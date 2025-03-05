@@ -1,3 +1,4 @@
+"use client"
 import useReviewStore from "@/Store/ReviewStore";
 import { useEffect } from "react";
 import CreateReview from "./CreateReviews";
