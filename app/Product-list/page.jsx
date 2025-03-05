@@ -1,28 +1,40 @@
 "use client";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import useStore from "@/Store/useStore";
 import Card from "../_components/(cardcomponents)/Card";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
 import LoadingPage from "@/components/Custom/Loader";
 import CardSkeleton from "../_components/Skeleton/CardSkeleton";
 
 const AllproductList = () => {
   const { data, loading, error, fetchData } = useStore();
+  const searchParams = useSearchParams();
+  
+  const query = searchParams.get("query")?.toLowerCase() || "";
+  const category = searchParams.get("category") || "";
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
   if (loading) return <LoadingPage />;
-  if (error) return <div className="text-red-500">
-    <CardSkeleton/>
-  </div>;
+  if (error) return <div className="text-red-500"><CardSkeleton/></div>;
 
   // Ensure `data.products` is used correctly
-  const products = data?.products || [];
+  let products = data?.products || [];
+
+  // Apply search filtering
+  products = products.filter(product => 
+    product.name.toLowerCase().includes(query)
+  );
+
+  // Apply category filtering (if a category is selected)
+  if (category && category !== "All Categories") {
+    products = products.filter(product => product.category === category);
+  }
 
   return (
-    <div className="container mx-auto grid grid-flow-row grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 my-16">
+    <div className="container mx-auto grid grid-flow-row grid-cols-2 md:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-4 gap-5 my-16">
       {products.length > 0 ? (
         products.map((product) => (
           <Card key={product._id} product={product} />

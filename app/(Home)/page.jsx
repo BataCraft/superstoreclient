@@ -8,6 +8,7 @@ import MainHeroSection from "../_components/_HeroSection/MainHeroSection"
 import Service from "../_components/Service"
 import OfferBanner from "../_Offers/OfferBanner"
 import { useEffect } from "react"
+import NewProduct from "../_components/_NewProduct/NewProduct"
 
 
 const HomeSection = () => {
@@ -21,6 +22,8 @@ const HomeSection = () => {
 
           <CardModel/>
           <OfferBanner/> 
+
+          <NewProduct/>
 
           
           

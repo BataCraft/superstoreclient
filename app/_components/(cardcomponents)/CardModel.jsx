@@ -12,70 +12,76 @@ import LoadingPage from "@/components/Custom/Loader";
 const CardModel = () => {
   const { data, error, loading, fetchData } = useStore();
 
-  try {
-    useEffect(()=>{
+  useEffect(() => {
+    try {
       fetchData();
-    },[fetchData]);
-  } catch (error) {
-    console.log(error);
-    
-    
-  }
-
+    } catch (error) {
+      console.log(error);
+    }
+  }, [fetchData]);
 
   if (loading) {
     return (
-      <div className="container mx-auto mt-16 p-8 rounded-2xl bg-secondaryColor">
-        <ProductHeader title="Deals of the Day" description="Hot items, Affordable Price" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <CardSkeleton key={`skeleton-${index}`} />
-          ))}
+      <div className="container mx-auto py-12 px-4 lg:px-8">
+        <div className="bg-gray-50 rounded-2xl p-6 lg:p-8 shadow-sm">
+          <ProductHeader title="Deals of the Day" description="Hot items, Affordable Price" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <CardSkeleton key={`skeleton-${index}`} />
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 
   if (error) {
-    return <div>
-      <CardSkeleton/>
-    </div>;
+    return (
+      <div className="container mx-auto py-12 px-4">
+        <CardSkeleton />
+      </div>
+    );
   }
 
-  // Check if data.products exists before filtering
   const products = data?.products || [];
- 
-  
-  // Changed featured_product to featured to match your filter
   const featuredProducts = products.filter((product) => product.flags.isFeatured === true);
-
-  
-  const limitedData = featuredProducts.slice(0, 6);
+  const limitedData = featuredProducts.slice(0, 8);
 
   return (
-    <div className="container mx-auto mt-16 p-8 rounded-2xl bg-secondaryColor">
-      <div>
+    <div className="container mx-auto py-8 px-4 lg:px-8">
+      <div className="bg-gray-50 rounded-2xl p-6 lg:p-8 shadow-sm">
         <ProductHeader title="Deals of the Day" description="Hot items, Affordable Price" />
 
-        <div className="flex items-center justify-between gap-8">
-          <div className="flex items-center justify-between gap-8 flex-col">
-            <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center place-items-center items-center">
+        <div className="flex flex-col md:flex-row gap-8 mt-8">
+          <div className="flex-grow">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 justify-items-center">
               {limitedData.length > 0 ? (
                 limitedData.map((product) => (
                   <Card key={product._id} product={product} />
                 ))
               ) : (
-                <p>No products available</p>
+                <div className="col-span-full text-center py-8">
+                  <p className="text-gray-500 text-lg">No products available</p>
+                </div>
               )}
             </div>
 
-            <div className="text-center">
-              <Link href={"/Product-list"} className="bg-assentColor text-white px-12 py-4">View More</Link>
+            <div className="text-center mt-12">
+              <Link 
+                href="/Product-list"
+                className="inline-flex px-8 py-3 bg-blue-600 text-white rounded-lg font-medium
+                  hover:bg-blue-700 transition-colors duration-200 shadow-sm
+                  hover:shadow-md active:transform active:scale-95"
+              >
+                View More Products
+              </Link>
             </div>
           </div>
 
-          <div className="flex-1 p-8 hidden xl:block">
-            <SaleCountdown />
+          <div className="hidden xl:block w-80 flex-shrink-0 ">
+            <div className="sticky top-8 ">
+              <SaleCountdown />
+            </div>
           </div>
         </div>
       </div>

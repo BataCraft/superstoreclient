@@ -18,6 +18,8 @@ import StarReview from '@/components/Custom/Star';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import useAuthStore from '@/Store/userStore';
+import Reviews from '@/app/ProductReviews/page';
+import CreateReview from '@/app/ProductReviews/CreateReviews';
 
 const ProductDetails = ({ params }) => {
     const { id } = useParams();
@@ -228,7 +230,8 @@ const ProductDetails = ({ params }) => {
                                 <Discription product={product} />
                             </TabsContent>
                             <TabsContent value="review" className="mt-6">
-                                <div className="text-gray-600">Reviews will be displayed here.</div>
+                            <Reviews product={product} />
+                           {/* <div className='w-full'> <CreateReview product={product} /></div> */}
                             </TabsContent>
                         </Tabs>
                     </div>

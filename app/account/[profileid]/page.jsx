@@ -75,6 +75,7 @@ const ProfilePage = () => {
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Order History Section */}
+          {/*}
           <div className="animate-slideInLeft">
             <Card className="h-full">
               <CardContent className="p-6">
@@ -85,7 +86,7 @@ const ProfilePage = () => {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  {/* Sample order items - replace with actual order data */}
+                 
                   {[1, 2, 3].map((order) => (
                     <div
                       key={order}
@@ -101,6 +102,8 @@ const ProfilePage = () => {
               </CardContent>
             </Card>
           </div>
+
+          */}
 
           {/* Profile Actions Section */}
           <div className="animate-slideInRight">

@@ -1,6 +1,8 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import ProductHeader from "../ProdctHeader"
+import { motion } from "motion/react"
+
 
 const brandLogo = [
     {
@@ -30,10 +32,23 @@ const brandLogo = [
     }
 ]
 
+
+
 const Brands = () => {
     return (
         <section className="py-16 bg-gray-50 mt-16">
-            <div className="container mx-auto px-4">
+            <motion.div
+            animate = {
+                {
+                    x:20,
+                    
+                }
+            }
+            transition={{
+                duration: 3,
+                delay : 1
+            }}
+            className="container mx-auto px-4">
                 <div className="flex items-baseline justify-between">
                     <div className=" mb-12">
                         <ProductHeader title={"Brands"} description={"Hot items, Affordable Price"} />
@@ -77,7 +92,7 @@ const Brands = () => {
 
 
 
-            </div>
+            </motion.div>
         </section>
     )
 }

@@ -86,10 +86,10 @@ const CheckOut = () => {
 
       const data = await res.json();
       
-      if (!res.ok) {
-        console.error("Order failed:", data);
-        throw new Error(data.message || "Checkout failed!");
-      }
+      // if (!res.ok) {
+      //   console.error("Order failed:", data);
+      //   throw new Error(data.message || "Checkout failed!");
+      // }
 
       toast.success("Order placed successfully!");
       localStorage.removeItem("checkoutItems");

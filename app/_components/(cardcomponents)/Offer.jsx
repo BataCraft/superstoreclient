@@ -39,7 +39,7 @@ const SaleCountdown = () => {
   ];
 
   return (
-    <div className="max-w-xs bg-white p-12 h-svh rounded-lg shadow-sm">
+    <div className="max-w-xs  bg-white p-12 h-svh rounded-lg shadow-2xl">
       {/* Sale Header */}
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">

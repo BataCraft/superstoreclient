@@ -9,6 +9,12 @@ const useAuthStore = create((set) => ({
   loading: false,
   error: null,
 
+  /**
+   * Login user with email and password.
+   * @param {string} email User email address.
+   * @param {string} password User password.
+   * @returns {boolean} True if login is successful, false otherwise.
+   */
   login: async (email, password) => {
     set({ loading: true, error: null });
 
@@ -41,6 +47,10 @@ const useAuthStore = create((set) => ({
     }
   },
 
+  /**
+   * Check if the user is authenticated by verifying the token in localStorage.
+   * @returns {User|Null} The user object if authenticated, null otherwise.
+   */
   checkAuth: async () => {
     set({
       loading: true,
