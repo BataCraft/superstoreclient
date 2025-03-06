@@ -9,18 +9,13 @@ import { motion } from "framer-motion";
 const img = [
   {
     image_name: "Innovative Solutions",
-    src: "/image1.png",
+    src: "/image02.jpg",
     description: "Transforming ideas into digital reality"
   },
   {
     image_name: "Creative Design",
-    src: "/image2.png",
+    src: "/image03.webp",
     description: "Crafting experiences that inspire"
-  },
-  {
-    image_name: "Technical Excellence",
-    src: "/image3.png",
-    description: "Pushing the boundaries of technology"
   }
 ];
 
