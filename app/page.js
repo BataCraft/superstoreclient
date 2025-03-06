@@ -12,11 +12,11 @@ const OfferBanner = lazy(() => import("./_Offers/OfferBanner"));
 export default function Home() {
   return (
     <>
-      <main>
-        <Suspense fallback={<LoadingPage />}>
+      <main className='overflow-hidden'>
           <MainHeroSection />
           <Service />
           <Brands />
+        <Suspense fallback={<LoadingPage />}>
           <CardModel />
           <OfferBanner /> 
           <NewProduct />
