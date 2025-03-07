@@ -97,7 +97,8 @@ const PaymentForm = ({ clientSecret }) => {
         if (orderData.order && orderData.order._id) {
           router.push(`/Order-success/${orderData.order._id}`);
         } else {
-          router.push('/Order-success/completed');
+          router.push(`/Order-success/${orderData.order._id}`);
+
         }
       } else {
         toast.error("Payment processing failed. Please try again.");
