@@ -1,22 +1,20 @@
-import LoadingPage from '@/components/Custom/Loader';
-import { Suspense, lazy } from 'react';
-
-// Lazy load components
-const CardModel = lazy(() => import("./_components/(cardcomponents)/CardModel"));
-const Brands = lazy(() => import("./_components/_Brands/Brands"));
-const MainHeroSection = lazy(() => import("./_components/_HeroSection/MainHeroSection"));
-const NewProduct = lazy(() => import("./_components/_NewProduct/NewProduct"));
-const Service = lazy(() => import("./_components/Service"));
-const OfferBanner = lazy(() => import("./_Offers/OfferBanner"));
+import { Suspense } from "react";
+import Service from "./_components/Service";
+import MainHeroSection from "./_components/_HeroSection/MainHeroSection";
+import Brands from "./_components/_Brands/Brands";
+import CardModel from "./_components/(cardcomponents)/CardModel";
+import OfferBanner from "./_Offers/OfferBanner";
+import NewProduct from "./_components/_NewProduct/NewProduct";
+import LoadingPage from "@/components/Custom/Loader";
 
 export default function Home() {
   return (
     <>
       <main className='overflow-hidden'>
+        <Suspense fallback={<LoadingPage />}>
           <MainHeroSection />
           <Service />
           <Brands />
-        <Suspense fallback={<LoadingPage />}>
           <CardModel />
           <OfferBanner /> 
           <NewProduct />

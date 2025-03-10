@@ -53,12 +53,15 @@ const PaymentForm = ({ clientSecret }) => {
       if (error) {
         setCardError(error.message);
         toast.error(error.message);
-      } else if (paymentIntent.status === "succeeded") {
-        // Create the order in  system now that payment is complete
+        return;
+      } 
+      
+      if (paymentIntent.status === "succeeded") {
+        // Create the order in system now that payment is complete
         const formattedItems = checkoutItems.map((item) => ({
           product: item.id,
           quantity: item.quantity,
-          price: item.price.sale || item.price.regular
+          price: item.price?.sale || item.price?.regular
         }));
 
         const token = localStorage.getItem("token");
@@ -80,12 +83,13 @@ const PaymentForm = ({ clientSecret }) => {
           }),
         });
 
-        const orderData = await orderRes.json();
-        
-        if (orderData.error) {
-          throw new Error(orderData.error);
+        if (!orderRes.ok) {
+          const errorData = await orderRes.json();
+          throw new Error(errorData.error || "Failed to create order");
         }
 
+        const orderData = await orderRes.json();
+        
         toast.success("Payment successful!");
         
         // Clear cart and checkout data
@@ -93,17 +97,17 @@ const PaymentForm = ({ clientSecret }) => {
         localStorage.removeItem("cart");
         localStorage.removeItem("shippingDetails");
         
-        // Redirect to success page - improved error handling
+        // Redirect to success page with better error handling
         if (orderData.order && orderData.order._id) {
           router.push(`/Order-success/${orderData.order._id}`);
         } else {
-          router.push(`/Order-success/${orderData.order._id}`);
-
+          router.push(`/Order-success`);
         }
       } else {
-        toast.error("Payment processing failed. Please try again.");
+        toast.error(`Payment status: ${paymentIntent.status}. Please try again.`);
       }
     } catch (err) {
+      console.error("Payment error:", err);
       toast.error(err.message || "Payment processing failed");
     } finally {
       setPaymentLoading(false);
@@ -161,7 +165,7 @@ const PaymentForm = ({ clientSecret }) => {
 
 // Page component that retrieves the client secret
 export default function PaymentPage({ params }) {
-  const [clientSecret, setClientSecret] = useState(null);
+  const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -207,9 +211,11 @@ export default function PaymentPage({ params }) {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Complete Your Payment</h1>
       
-      <Elements stripe={stripePromise} options={{ clientSecret }}>
-        <PaymentForm clientSecret={clientSecret} />
-      </Elements>
+      {clientSecret && (
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
+          <PaymentForm clientSecret={clientSecret} />
+        </Elements>
+      )}
       
       <div className="mt-6 text-center">
         <button 
