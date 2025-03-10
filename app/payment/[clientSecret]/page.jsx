@@ -54,7 +54,7 @@ const PaymentForm = ({ clientSecret }) => {
         setCardError(error.message);
         toast.error(error.message);
       } else if (paymentIntent.status === "succeeded") {
-        // Create the order in your system now that payment is complete
+        // Create the order in  system now that payment is complete
         const formattedItems = checkoutItems.map((item) => ({
           product: item.id,
           quantity: item.quantity,

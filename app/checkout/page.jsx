@@ -39,10 +39,20 @@ const CheckOut = () => {
   }, [loading, user, router]);
 
   const removeItems = (index) => {
-    const updateCart = cartItems.filter((_, i) => i !== index);
-    setCartItems(updateCart);
-    localStorage.setItem("checkoutItems", JSON.stringify(updateCart));
+    // Remove item from cartItems
+    const updatedCart = cartItems.filter((_, i) => i !== index);
+    
+    // Update the state
+    setCartItems(updatedCart);
+  
+    // Update localStorage to persist the change
+    localStorage.setItem("checkoutItems", JSON.stringify(updatedCart));
+    
+    // Log to verify the change
+    console.log('Updated Cart:', updatedCart);
+    console.log('LocalStorage after update:', localStorage.getItem('checkoutItems'));
   };
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -164,7 +174,7 @@ const CheckOut = () => {
           <div className="text-center py-8">
             <p className="mb-4">Your cart is empty.</p>
             <Button 
-              onClick={() => router.push("/products")} 
+              onClick={() => router.push("/Product-list")} 
               className="bg-primaryColor text-white"
             >
               Continue Shopping

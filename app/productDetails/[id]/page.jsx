@@ -211,9 +211,9 @@ const ProductDetails = ({ params }) => {
                                         <ShoppingCart className="h-5 w-5" />
                                         Add to Cart
                                     </Button>
-                                    <Button variant="outline" size="lg">
+                                    {/* <Button variant="outline" size="lg">
                                         <Heart className="h-5 w-5" />
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             </div>
                         </div>
